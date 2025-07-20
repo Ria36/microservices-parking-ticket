@@ -1,0 +1,42 @@
+package org.ria.parkinglotservice.controller;
+
+import org.ria.parkinglotservice.model.ParkingSpot;
+import org.ria.parkinglotservice.service.ParkingService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/spots")
+public class ParkingController {
+
+    private final ParkingService parkingService;
+
+    public ParkingController(ParkingService parkingService) {
+        this.parkingService = parkingService;
+    }
+
+    @GetMapping("/available")
+    public List<ParkingSpot> getAvailableSpots() {
+        return parkingService.getAvailableParkingSlots();
+    }
+
+    @PostMapping("/occupy/{spotId}")
+    public ResponseEntity<String> occupySpot(@PathVariable String spotId) {
+        boolean success = parkingService.occupyParkingSlot(spotId);
+        if (success) {
+            return ResponseEntity.ok("occupied");
+        }
+        return ResponseEntity.badRequest().body("failed");
+    }
+
+    @PostMapping("/free/{spotId}")
+    public ResponseEntity<String> freeSpot(@PathVariable String spotId) {
+        boolean success = parkingService.freeParkingSlot(spotId);
+        if (success) {
+            return ResponseEntity.ok("freed");
+        }
+        return ResponseEntity.badRequest().body("failed");
+    }
+}

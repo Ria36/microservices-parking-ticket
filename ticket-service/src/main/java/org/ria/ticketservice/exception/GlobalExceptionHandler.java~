@@ -1,0 +1,17 @@
+package org.ria.ticketservice.exception;
+
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Map<String,String>> handleRuntimeException(RuntimeException ex) {
+    Map<String,String> errorMap = Map.of("error", ex.getMessage());
+    return ResponseEntity.status(500).body(errorMap);
+    }
+}
