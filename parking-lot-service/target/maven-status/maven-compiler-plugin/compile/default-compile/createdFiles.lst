@@ -1,0 +1,5 @@
+org\ria\parkinglotservice\controller\ParkingController.class
+org\ria\parkinglotservice\model\ParkingSpot.class
+org\ria\parkinglotservice\model\VehicleType.class
+org\ria\parkinglotservice\service\ParkingService.class
+org\ria\parkinglotservice\ParkingLotServiceApplication.class
