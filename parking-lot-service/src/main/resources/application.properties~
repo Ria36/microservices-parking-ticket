@@ -1,0 +1,8 @@
+spring.application.name=parking-lot-service
+
+server.port=8080
+
+# Eureka URL (docker network)
+eureka.client.service-url.defaultZone=http://eureka-server:8761/eureka/
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true

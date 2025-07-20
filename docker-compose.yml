@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  parking-service:
+    build: ./parking-lot-service
+    container_name: parking-service
+    ports:
+      - "8080:8080"
+
+  ticket-service:
+    build: ./ticket-service
+    container_name: ticket-service
+    environment:
+      - PARKING_LOT_SERVICE_URL=http://parking-service:8080/spots
+    ports:
+      - "8081:8081"
+    depends_on:
+      - parking-service

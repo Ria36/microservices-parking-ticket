@@ -1,0 +1,12 @@
+org\ria\ticketservice\service\TicketService$1.class
+org\ria\ticketservice\entity\TicketEntity.class
+org\ria\ticketservice\controller\TicketController.class
+org\ria\ticketservice\model\VehicleType.class
+org\ria\ticketservice\model\Vehicle.class
+org\ria\ticketservice\service\TicketService.class
+org\ria\ticketservice\entity\TicketEntity$TicketEntityBuilder.class
+org\ria\ticketservice\repository\TicketRepository.class
+org\ria\ticketservice\client\ParkingLotClient.class
+org\ria\ticketservice\model\Ticket.class
+org\ria\ticketservice\exception\GlobalExceptionHandler.class
+org\ria\ticketservice\TicketServiceApplication.class
