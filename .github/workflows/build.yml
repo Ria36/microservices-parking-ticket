@@ -1,0 +1,36 @@
+name: Build & Test Microservices
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build Parking Lot Service
+        working-directory: parking-lot-service
+        run: mvn clean install -DskipTests
+
+      - name: Build Ticket Service
+        working-directory: ticket-service
+        run: mvn clean install -DskipTests
+
+      - name: Build Eureka Server
+        working-directory: eureka-server
+        run: mvn clean install -DskipTests
+
